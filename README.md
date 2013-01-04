@@ -1,5 +1,6 @@
 REALTIME TICKET for DJANGO
 ==========================
+Authorize Django users in realtime (asynchronous) backends using Redis expiring tickets.
 
 Important
 ---------
