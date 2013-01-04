@@ -36,7 +36,7 @@ url(r'', include('realtime_ticket.urls'))
 Using
 -----
 
-After install you can create new ticket making POST javascript request on url `/ticket/`.
+After install you can create new ticket making POST javascript request on url `/ticket/` (do not forget about `csrf_token`).
 If everything is OK you will receive json:
 ```python
 {'status': 'ok', 'message': "NEW_TICKET_FOR_USER"}
