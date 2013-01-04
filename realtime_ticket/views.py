@@ -88,7 +88,7 @@ class RealtimeTicket(object):
 
 class RealtimeTicketFactory(object):
 
-	# class which creates ticket
+    # class which creates ticket
     ticket_class = RealtimeTicket
     # class which saves ticket
     connection_class = RedisConnection
