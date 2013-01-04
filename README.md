@@ -48,7 +48,7 @@ those middleware on per-view basis to avoid creating tickets on every request to
 ```python
 from django.utils.decorators import decorator_from_middleware
 from django.utils.decorators import method_decorator
-from realtime_ticket.middleware import RealtimeTicketMiddleware
+from realtime_ticket import RealtimeTicketMiddleware
 
 
 class ChatView(TemplateView):
