@@ -25,7 +25,7 @@ setup(
     license="http://www.apache.org/licenses/LICENSE-2.0",
     description="authorize django users in realtime(asynchronous) backends using expiring tickets in Redis",
     keywords="python django realtime asynchronous async ticket redis authorization",
-    packages=["realtime_ticket",],
+    packages=["realtime_ticket", ],
     package_data={},
     **extra
 )
