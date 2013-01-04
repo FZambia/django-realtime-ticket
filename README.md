@@ -1,6 +1,6 @@
 REALTIME TICKET for DJANGO
 ==========================
-Authorize Django users in realtime (asynchronous) backends using Redis expiring tickets.
+Authorize [Django](https://www.djangoproject.com/) users in realtime (asynchronous) backends using [Redis](http://redis.io/) expiring tickets.
 
 Important
 ---------
@@ -10,7 +10,7 @@ Overview
 --------
 Django and realtime are not friends.
 
-You should use Tornado, Twisted, Cyclone, Gevent or Nodejs or something else together with Django to create realtime web-applications.
+You should use [Tornado](https://github.com/facebook/tornado), [Twisted](http://twistedmatrix.com/trac/), [Cyclone](https://github.com/fiorix/cyclone), [Gevent](https://github.com/SiteSupport/gevent) or [Nodejs](https://github.com/joyent/node) or something else together with Django to create realtime web-applications.
 
 This app helps to authorize your Django users in asynchronous backend using expiring tickets.
 
