@@ -18,7 +18,7 @@ This app helps to authorize your Django users in asynchronous backend using expi
 
 By default, this application uses Redis to create such expiring tickets.
 
-This is a sequence of actions you need to do to authorize user using this technique:
+Here is a sequence of actions you need to do to authorize user using this technique:
 
 * before creating connection to async backend insert user ticket into Redis.
 * After this append inserted ticket to connection request.
