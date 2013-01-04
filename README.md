@@ -46,6 +46,7 @@ variable with name `realtime_ticket` into your template context. So you just use
 those middleware on per-view basis to avoid creating tickets on every request to your site. Here is an example:
 
 ```python
+from django.views.generic import TemplateView
 from django.utils.decorators import decorator_from_middleware
 from django.utils.decorators import method_decorator
 from realtime_ticket import RealtimeTicketMiddleware
