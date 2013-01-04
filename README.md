@@ -7,9 +7,13 @@ This is an experimental project. Please, be careful to use it in production. Be 
 
 Overview
 --------
-Django and realtime are not friends. You should use Tornado, Twisted, Cyclone, Gevent, Nodejs together with Django to create realtime web-applications. This app helps to authorize your 
-Django users in asynchronous backend using expiring tickets. By default, this app uses Redis to 
-create such expiring tickets. Before create connection to async backend you insert ticket in Redis. After this you should append this ticket to connection request. In async backend you should check that this key exists in Redis, get additional user information (key's value) if you need it, then delete this key from Redis.
+Django and realtime are not friends.
+
+You should use Tornado, Twisted, Cyclone, Gevent or Nodejs or something else together with Django to create realtime web-applications.
+
+This app helps to authorize your Django users in asynchronous backend using expiring tickets.
+
+By default, this application uses Redis to create such expiring tickets. Before create connection to async backend you insert ticket in Redis. After this you append this ticket to connection request. In async backend you check that those key exists in Redis, get additional user information (key's value) if you need it, then delete key from Redis to prevent multiple connections with single key.
 
 
 Using
