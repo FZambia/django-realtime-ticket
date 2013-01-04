@@ -33,3 +33,22 @@ If everything is OK you will receive json:
 ```
 
 Use this ticket to create authorization request to your async backend. Do not forget to delete this key from Redis after successful authorization.
+
+
+Configuration
+-------------
+
+You can configure app's behaviour in your `settings.py`:
+```python
+
+# time (in seconds) after that ticket will expire
+REALTIME_TICKET_EXPIRE = 10
+
+# redis connection settings
+REALTIME_TICKET_REDIS = {
+    'host': 'localhost',
+    'port': 6379,
+    'db': 0,
+    'socket_timeout': 1
+}
+```
