@@ -42,7 +42,7 @@ If everything is OK you will receive json:
 Use this ticket in POST callback to create authorization request to your async backend. Do not forget to delete this key from Redis after successful authorization.
 
 If you don't want to make such javascript calls you can use middleware provided by this application - it inserts
-variable with name `realtime_ticket` into your template context. So you just use template it as usually. You must use
+variable with name `realtime_ticket` into your template context. So you just use template as usually. You must use
 those middleware on per-view basis to avoid creating tickets on every request to your site. Here is an example:
 
 ```python
