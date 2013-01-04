@@ -86,26 +86,33 @@ class RealtimeTicket(object):
         return json.dumps({'id': userid, 'username': username})
 
 
-class RealtimeTicketView(View):
+class RealtimeTicketFactory(object):
 
-    # class which creates ticket
-    ticket_class = RealtimeTicket
-    # class which saves ticket
-    connection_class = RedisConnection
+	# class which creates ticket
+	ticket_class = RealtimeTicket
+	# class which saves ticket
+	connection_class = RedisConnection
 
-    def create_ticket(self, request, *args, **kwargs):
-        ticket = self.ticket_class(request, args, kwargs)
-        try:
-            key = ticket.set(self.connection_class)
-        except RealtimeTicketError, e:
-            message = 'error while creating ticket'
-            if settings.DEBUG:
-                message += ': %s' % str(e)
-            context = {'status': 'error', 'message': message}
-        else:
-            context = {'status': 'ok', 'message': key}
-        return context
+	def create_ticket_info(self, request):
+		try:
+			key = self.create_ticket(request)
+		except RealtimeTicketError, e:
+			message = 'error while creating ticket'
+			if settings.DEBUG:
+				message += ': %s' % str(e)
+			context = {'status': 'error', 'message': message}
+		else:
+			context = {'status': 'ok', 'message': key}
+		return context
 
-    def post(self, request):
-        context = self.create_ticket(request, self.args, self.kwargs)
-        return HttpResponse(json.dumps(context), mimetype="application/json")
+	def create_ticket(self, request):
+		ticket = self.ticket_class(request)
+		key = ticket.set(self.connection_class)
+		return key
+
+
+class RealtimeTicketView(RealtimeTicketFactory, View):
+
+	def post(self, request):
+		context = self.create_ticket_info(request)
+		return HttpResponse(json.dumps(context), mimetype="application/json")
