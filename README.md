@@ -2,6 +2,8 @@ REALTIME TICKET for DJANGO
 ==========================
 Authorize [Django](https://www.djangoproject.com/) users in realtime (asynchronous) backends using [Redis](http://redis.io/) expiring tickets.
 
+Ticket in this case is just a key-value pair. Key is a unique string, value - json of additional information about user (id, username).
+
 Important
 ---------
 This is an experimental project. Please, be careful to use it in production. Be sure that you understand how it really works. 
