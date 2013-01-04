@@ -88,37 +88,37 @@ class RealtimeTicket(object):
 
 class RealtimeTicketFactory(object):
 
-	# class which creates ticket
-	ticket_class = RealtimeTicket
-	# class which saves ticket
-	connection_class = RedisConnection
+        # class which creates ticket
+    ticket_class = RealtimeTicket
+    # class which saves ticket
+    connection_class = RedisConnection
 
-	def __init__(self, ticket_class=None, connection_class=None):
-		if ticket_class:
-			self.ticket_class = ticket_class
-		if connection_class:
-			self.connection_class = connection_class
+    def __init__(self, ticket_class=None, connection_class=None):
+        if ticket_class:
+            self.ticket_class = ticket_class
+        if connection_class:
+            self.connection_class = connection_class
 
-	def create_ticket_info(self, request):
-		try:
-			key = self.create_ticket(request)
-		except RealtimeTicketError, e:
-			message = 'error while creating ticket'
-			if settings.DEBUG:
-				message += ': %s' % str(e)
-			context = {'status': 'error', 'message': message}
-		else:
-			context = {'status': 'ok', 'message': key}
-		return context
+    def create_ticket_info(self, request):
+        try:
+            key = self.create_ticket(request)
+        except RealtimeTicketError, e:
+            message = 'error while creating ticket'
+            if settings.DEBUG:
+                message += ': %s' % str(e)
+            context = {'status': 'error', 'message': message}
+        else:
+            context = {'status': 'ok', 'message': key}
+        return context
 
-	def create_ticket(self, request):
-		ticket = self.ticket_class(request)
-		key = ticket.set(self.connection_class)
-		return key
+    def create_ticket(self, request):
+        ticket = self.ticket_class(request)
+        key = ticket.set(self.connection_class)
+        return key
 
 
 class RealtimeTicketView(RealtimeTicketFactory, View):
 
-	def post(self, request):
-		context = self.create_ticket_info(request)
-		return HttpResponse(json.dumps(context), mimetype="application/json")
+    def post(self, request):
+        context = self.create_ticket_info(request)
+        return HttpResponse(json.dumps(context), mimetype="application/json")
