@@ -16,13 +16,16 @@ You should use [Tornado](https://github.com/facebook/tornado), [Twisted](http://
 
 This app helps to authorize your Django users in asynchronous backend using expiring tickets.
 
-By default, this application uses Redis to create such expiring tickets:
+By default, this application uses Redis to create such expiring tickets.
 
-* before creating connection to async backend you insert ticket into Redis.
-* After this you append inserted ticket to connection request.
-* In async backend you check that those key exists in Redis, get additional user information (key's value) if you need it
-* then delete key from Redis to prevent multiple connections with single key.
+This is a sequence of actions you need to do to authorize user using this technique:
 
+* before creating connection to async backend insert user ticket into Redis.
+* After this append inserted ticket to connection request.
+* In async backend check that ticket from request exists in Redis, get additional user information (key's value) if necessary.
+* Delete key from Redis to prevent multiple connections with single key.
+
+This app simplifies only first point of list. The rest of work is up to you! You should choose one of async servers, implement ticket check logic and (the most difficult part) append ticket for every connection request to those async server.
 
 Install
 ------
