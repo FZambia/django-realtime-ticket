@@ -31,7 +31,7 @@ Install
 ------
 
 ```bash
-pip install git+git://github.com/FZambia/django-realtime-ticket.git
+pip install django-realtime-ticket
 ```
 
 Add `realtime_ticket` to your `INSTALLED_APPS`
