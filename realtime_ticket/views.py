@@ -93,6 +93,12 @@ class RealtimeTicketFactory(object):
 	# class which saves ticket
 	connection_class = RedisConnection
 
+	def __init__(self, ticket_class=None, connection_class=None):
+		if ticket_class:
+			self.ticket_class = ticket_class
+		if connection_class:
+			self.connection_class = connection_class
+
 	def create_ticket_info(self, request):
 		try:
 			key = self.create_ticket(request)
